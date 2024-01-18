@@ -1,4 +1,3 @@
-# Exercise 1 1/18/2023
 import random
 
 def main():
