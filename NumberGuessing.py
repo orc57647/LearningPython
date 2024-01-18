@@ -1,22 +1,34 @@
+# Exercise 1 1/18/2023
 import random
-n = random.randint(1, 100)
-guess = 1
 
-print('\nWelcome to "THE" guess the random number game. The number ranges from 1-100.')
+def main():
+    guess_counter = 1
+    low = 1
+    high = 100
+    ans = random.randint(low, high)
 
-ans = int(input('\nPlease input your guess: '))
+    print('\nWelcome to "THE" guess the random number game. The number ranges from 1-100.')
+    guess = int(input('\nPlease input your guess: '))
 
-while n != ans:
-    if ans > n:
-        print('\nYour guess is too high!')
-        ans = int(input('Please input your guess: '))
-        guess += 1
-    elif ans < n:
-        print('\nYour guess is too low!')
-        ans = int(input('Please input your guess: '))
-        guess += 1
-    else:
-        break
+    while ans != guess:
+        if guess > ans:
+            print(f'Guess {guess_counter}: Your guess is too high!')
+            high = guess
+            print(f'Range Helper: {low} to {high}')
+            guess = int(input('\nPlease input your guess: '))
+            guess_counter += 1
 
-print('\nCongrats you won the game!')
-print('The number was', n, 'and it took you', guess, 'attempts.')
+        elif guess < ans:
+            print(f'Guess {guess_counter}: Your guess is too low!')
+            low = guess
+            print(f'Range Helper: {low} to {high}')
+            guess = int(input('\nPlease input your guess: '))
+            guess_counter += 1
+
+        else:
+            break
+
+    print('\nCongrats you won the game!')
+    print(f'The number was {ans} and it took you {guess_counter} attempts.')
+
+main()
